@@ -3,6 +3,17 @@
 import {main as mainMini} from './headerMini.js'
 import {main as mainMobile} from './headerMobile.js'
 
+document.addEventListener('DOMContentLoaded', function(){
+    const xhttp = new XMLHttpRequest() 
+    const metaPage = document.querySelector('meta[name="page"]').content
+    xhttp.addEventListener('load', xhttpListener)
+    if (metaPage == 'home'){
+        xhttp.open("GET", "./pages/header.html")
+    }else{
+        xhttp.open("GET", '../pages/header.html')
+    }
+    xhttp.send()
+})
 function printTitle(){
     let title = 'Intro To Web Dev'
     let index = 0
@@ -33,13 +44,16 @@ function xhttpListener(){
     // Load mobile header
     mainMobile()
 
-    const metaPage = document.querySelector('meta[name="page"]').content
+    // Highlighter for the nav
     const navLinks = document.querySelectorAll('#desktopNav > ul > li > a')
     const nav = document.querySelector('#desktopNav')
     navLinks.forEach(element => {
         element.addEventListener("mouseenter", moveHighlightEnter)
     })
     nav.addEventListener("mouseleave", moveHighlightExit)
+
+    // Calculate the 'href' links for index.html
+    const metaPage = document.querySelector('meta[name="page"]').content
     if (metaPage == 'home'){
         const regexSelectorEnd = /(\/.*){2}/g
         const regexSelectorBase = /^.*(?=\/)/g
@@ -57,17 +71,7 @@ function xhttpListener(){
         })
     }
 }
-document.addEventListener('DOMContentLoaded', function(){
-    const xhttp = new XMLHttpRequest() 
-    const metaPage = document.querySelector('meta[name="page"]').content
-    xhttp.addEventListener('load', xhttpListener)
-    if (metaPage == 'home'){
-        xhttp.open("GET", "./pages/header.html")
-    }else{
-        xhttp.open("GET", '../pages/header.html')
-    }
-    xhttp.send()
-})
+
 function moveHighlightEnter(){
     const current = document.getElementsByClassName('current')[0]
     if (this != current){
@@ -75,6 +79,7 @@ function moveHighlightEnter(){
         this.classList.add('current')
     }
 }
+
 function moveHighlightExit(){
     document.getElementsByClassName('current')[0].classList.remove('current')
     currentPage()

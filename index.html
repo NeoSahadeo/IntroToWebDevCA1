@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +9,55 @@
         <meta name="description" content="A website for beginners to learn HTML, CSS, and Regex.">
         <meta name="page" content="home">
         <title>Intro To Web Dev | Home</title>
+        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/global.css">
+        <link rel="stylesheet" href="./css/index.css">
         <script type="module" src="./static/loadheader.js"></script>
     </head>
     <body>
         <header>
         </header>
         <main>
+            <div id="filler">
+                <img id="heroText" alt="Introduction to Web Dev Text" src="./images/IntroToWebDevText.svg">
+                <img id="heroImage" alt="Introduction to Web Dev Image" src="./images/IntroToWebDevImage.jpg">
+                <span id="scrollNotifContainer">
+                    <img id="scrollNotif" alt="Scroll more notification" src="./images/scrolldown.svg">
+                </span>
+            </div>
+            <div id="heroBlend"></div>
+            <section>
+                <h1>Hey! Welcome to my site.</h1>
+                <p>This site functions as a guide for the "Introduction to Web Development" course taught by 
+                <a href="https://www.linkedin.com/in/philip-mcguinness-03bb0b26?originalSubdomain=ie">Philip McGuinness</a></p>
+                <p>The range of guides my site will cover:</p>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>REGEX</li>
+                    <li><s>Javascript</s></li>
+                </ul>
+                <h4>Why no Javascript?</h4>
+                <p>Javascript is left out due to the time contraint and my lack of expertise. I've linked a really nice resource to learn Javascript on your own, 
+                    <a href="https://javascript.info/">Javascript.info</a>.
+                </p>
+            </section>
         </main>
         <footer> 
         </footer>
+        <script>
+            'use strict';
+            let screenWidth = window.innerWidth
+            let screenHeight = window.innerHeight
+            
+            // Offset = screenHeigth - (headerHeight + padding/marginOffset + marginIncrease(located in css))
+            const offset = screenHeight - 102
+            document.getElementById('filler').style.height = `${offset}px`
+            document.getElementById('scrollNotif').style.top = `${offset}px`
+            setTimeout(()=>{
+                document.getElementById('scrollNotif').style.display = 'block';
+            }, 500)
+        </script>
     </body>
 </html>

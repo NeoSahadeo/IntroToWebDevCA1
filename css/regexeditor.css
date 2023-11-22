@@ -24,3 +24,6 @@ h4 {
     position: absolute; 
     top: 0px;
 }
+pre {
+    text-wrap: balance !important;
+}

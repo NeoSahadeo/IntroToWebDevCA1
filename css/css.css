@@ -1,0 +1,104 @@
+@media only screen and (max-width: 830px) {
+    #togglePreview {
+        display: none !important;
+    }
+    .preview-button-container {
+        display: none !important;
+    }
+    .example-container {
+        border-left: 0px !important;
+        border-right: 0px !important;
+    }
+}
+iframe {
+    /* width: 100%; */
+    /* height: 50vh; */
+    /* max-height: 450px; */
+    /* border: 1px solid white; */
+    width: 60vw;
+    background-color: white;
+}
+#cssPreviewContainer {
+    position: fixed;
+    box-shadow: 1px -2px 51px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px -2px 51px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px -2px 51px 0px rgba(0,0,0,0.75);
+    /* color: black; */
+    cursor: move;
+    border-radius: 3px;
+    height: 0px;
+    top: 104px;
+}
+#cssPreviewContainer > div {
+    /* border: 1px solid black; */
+    cursor: move;background-color: var(--background-color);width: 100%; display: flex; flex-direction: row; justify-content: center; border: 1px solid white; border-radius: 5px 5px 0px 0px;
+}
+#cssPreviewContainer > div > h4 {
+    margin: 10px 0px; user-select: none;
+}
+.preview-button-container {
+    width: 100vw;
+    height: 0px;
+    margin: -40px 4px 0px 0px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.preview-button {
+    position: relative; 
+    /* margin-left: 96%; */
+    width: 30px;
+    height: 30px;
+}
+
+pre {
+    max-height: 400px !important;
+}
+.example-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 0.9em;
+    color: #828282;
+    margin-bottom: 0em;
+}
+.example-container {
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}
+.example-container h4, .example-container p {
+    margin: 0px;
+}
+.example-container h4 {
+    margin-top: 20px;
+}
+.justifyContentExample, .alignItemsExample {
+    display: flex;
+    background-color: black;
+    border-radius: 3px;
+}
+.alignItemsExample {
+    height: 150px;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.justifyContentExample {
+    width: 100%; 
+}
+.blockExample div {
+    width: 50px;
+    height: 50px;
+    margin: 4px;
+    border-radius: 3px;
+}
+.blockExample div:nth-child(1) {
+    background-color: blue;
+}
+.blockExample div:nth-child(2) {
+    background-color: red;
+}
+.blockExample div:nth-child(3) {
+    background-color: green;
+}

@@ -1,0 +1,189 @@
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+    --borderColorLegacy: hsl(0, 0%, 18.82%);
+    --highlightBackground: #1f1f1f;
+    --linkColor: #aaa;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: "Roboto","Arial",sans-serif;
+    width: 100vw;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+#desktopHeader, #drawer {
+    position: fixed;
+}
+#desktopHeader {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-height: 56px;
+    padding: 0px 16px 0px 16px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: var(--background-color);
+    z-index: 5;
+}
+#navContainer1 {
+    display: flex;
+    width: 100%;
+    min-width: 169px;
+    max-width: 169px;
+}
+#navContainer2 {
+    display: flex;
+    align-items: center;
+    flex: 0 1 732px;
+    padding-left: 40px;
+    margin-left: auto;
+}
+#navContainer3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 225px;
+    height: 100%;
+    margin-left: auto;
+}
+#searchContainer {
+    height: 100%;
+    max-height: 40px;
+    width: 100%;
+}
+#searchBar {
+    height: 100%;
+    width: 100%;
+    padding: 0px 4px 0px 16px;
+    margin-left: 32px;
+    background-color: var(--background-color);
+    border-radius: 40px 0 0 40px;
+    border: 1px solid var(--borderColorLegacy);
+    border-right: 0px;
+}
+#searchButton {
+    display: flex;
+    height: 41px;
+    min-width: 64px;
+    padding: 0px;
+    border-radius: 0 40px 40px 0;
+    background-color: var(--highlightBackground);
+    border: 1px solid var(--borderColorLegacy);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#searchIcon {
+    fill: var(--color);
+    max-width: 24px;
+    max-height: 24px;
+}
+.sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    max-width: 78px;
+    padding: 0px 15px;
+    border: 1px solid var(--borderColorLegacy);
+    border-radius: 40px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.sign-in-font{
+    font-size: 14px;
+    font-weight: bold;
+    color: #3ea6ff;
+}
+.user-icon {
+    margin: 0px 6px 0px -6px;
+    fill: #3ea6ff;
+    max-width: 24px;
+    max-height: 24px;
+}
+#topBarMenu {
+    margin-left: auto;
+    padding: 8px;
+}
+#topBarMenuIcon {
+    fill: white;
+}
+#hamburger {
+    background-color: transparent;
+    border: 0px;
+}
+#hamburger > span, #hamburger:before, #hamburger:after {
+    display: block;
+    content: '';
+    background-color: white;
+    width: 18px;
+    height: 1px;
+    margin: 5px 0px;
+}
+#logo {
+    width: 120px;
+    padding: 18px 14px 18px 16px;
+}
+#drawer {
+    position: fixed;
+    width: 100%;
+    max-width: 240px;
+    top: 56px;
+    bottom: 0px;
+    overflow-y: scroll;
+}
+#drawer ul {
+    list-style-type: none;
+    padding: 12px;
+    margin: 0px;
+}
+#drawer ul li {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px 12px;
+    align-items: center;
+    height: 40px;
+    font-size: 15px;
+}
+#currentDrawer {
+    background-color: var(--highlightBackground);
+    border-radius: 10px;
+    font-weight: bold;
+}
+hr {
+    border: 1px solid var(--highlightBackground);
+}
+.drawer-icon {
+    max-width: 24px;
+    max-height: 24px;
+    fill: var(--color);
+    margin-right: 24px;
+}
+.span-font {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+#signInBox {
+    padding: 16px 32px;
+}
+.list-title {
+    padding: 6px 12px 4px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.footer-link {
+    color: var(--linkColor);
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.8rem;
+}
+

@@ -12,8 +12,14 @@ function main(){
 }
 
 function resizeHandler(e){
-    if (window.innerWidth > 820 && menu.style.visibility == 'hidden'){
+    if (window.innerWidth > 830 && menu.style.visibility == 'hidden'){
         menu.style.visibility = ''
+    }
+    if (window.innerWidth >= 830 && body.classList.contains('stop-scrolling')) {
+        body.classList.remove('stop-scrolling')
+    }
+    if (window.innerWidth < 830 && !body.classList.contains('stop-scrolling') && menu.style.visibility == 'visible'){
+        body.classList.add('stop-scrolling')
     }
 }
 

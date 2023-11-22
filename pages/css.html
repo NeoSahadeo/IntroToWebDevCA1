@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +9,910 @@
         <meta name="description" content="A CSS beginners guide.">
         <meta name="page" content="css">
         <title>Intro To Web Dev | CSS</title>
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="../css/global.css">
+        <link rel="stylesheet" href="../css/css.css">
         <script type="module" src="../static/loadheader.js"></script>
     </head>
     <body>
-        <header>
-        </header>
+        <header></header>
         <main>
+            <div id="cssPreviewContainer" class="hidden">
+                <div isdraggable="true">
+                    <h4>
+                        CSS Preview
+                    </h4>
+                </div>
+                <iframe id="cssPreviewIframe" src="./youtube/index.html"  height="400" width="403" style="resize: both; border-radius: 0px 0px 5px 5px; border-top: 0px;"></iframe>
+            </div>
+            <div class="intro-image-container">
+                <img alt="CSS SVG Image" class="intro-image" src="../images/CSSIntro.svg">
+            </div>
+            <section>
+                <h2>What is Cascading Style Sheets (CSS)?</h2>
+                <article>
+                    <figure>
+                        <blockquote cite="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">"CSS (Cascading Style Sheets) is used to style and lay out web pages — for example, to alter the font, color, size, and spacing of your content, split it into multiple columns, or add animations and other decorative features." - mdn web docs</blockquote>
+                    </figure>
+                </article>
+                <p></p>
+                <article>
+                    <h4>What you'll learn about:</h4>
+                    <ul>
+                        <li>Variables</li>
+                        <li>Flexbox</li>
+                        <li>Blocking</li>
+                        <li>Layouts</li>
+                        <li>Data Themes</li>
+                        <li>Margins and Padding</li>
+                        <li>Positioning</li>
+                        <li>Selectors</li>
+                    </ul>
+                </article>
+            </section>
+            <section>
+                <h2>The Best Way to Learn CSS</h2>
+                <article>
+                    <p>I find the easiest way to learn CSS is to find an effect from a website; layout, colours, animations; and try to mimic it.</p>
+                    <p>For this CSS guide, we will be creating a YouTube lookalike (just the styling). I'll provide the base HTML file. If you're on a mobile device, unfortunately you will not be able to access the CSS previewer. The site we will create will not be mobile responsive (the guide would be 45min+ long if we were going to design it for mobile).</p>
+                    <p>You can preview the current section of CSS by click on the checkbox located in the top-right corner above a code-block. The toggle button for the CSS Previewer is located in the bottom-right of the screen.</p>
+                    <p>The guide will incrementally add to the CSS file. Skip to the end of this guide to get the full file, or click this link &rArr;<a href="#EndOfGuide">End of Guide</a></p>
+                </article>
+            </section>
+            <section>
+                <h2>MeTube</h2>
+                <span class="disclaimer">**DISCLAIMER**
+                <p>ALL ICONS, SVGS, NAMES AND IMAGES ARE OWNED BY GOOGLE AND YOUTUBE. I DO NOT CLAIM TO OWN ANYTHING. THIS GUIDE IS MEANT FOR EDUCATIONAL PURPOSES ONLY.</p>
+                </span>
+                <article>
+                    <ol>
+                        <li>
+                            Grab the <a href="./youtube/index.html" download="index.html">index.html</a> file.
+                        </li>
+                        <li>
+                            Create a directory for all your files.
+                        </li>
+                        <li>
+                            Create a <span class="intext-highlight">global.css</span> file in the same directory level as the <span class="intext-highlight">index.html</span>.</p>
+                        </li>
+                    </ol>
+                    <p>Let's start of by setting the data-theme; define colors and set the margin to zero in the body.</p>
+                    <h3 class="sub-title">Data-Theme</h3>
+                    <p>A data-theme will allow you to change the entire theme of the document by changing a single value.</p>
+                    <br>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                        <pre lang="css">
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+}
+</pre>
+                    </div>
+                    <p>The CSS selector will select <span class="intext-highlight" lang="css">html[data-theme="dark"]</span> value from the HTML document.</p>
+                    <p>The two dashes <span class="intext-highlight" lang="css">--</span> define a variable. These are different from attributes as they don't effect the styling, rather they define values that can be used and accessed with a common name.</p>
+                    <p>Don't worry about the <span class="intext-highlight" lang="css">:root</span>. This is used to refer to the root of the document. My CSS previewer requires me to edit the root classes of the document.</p>
+                    <h3 class="sub-title">Body Margin</h3>
+                    <p>The body has a default margin which is roughly 8px. This can get really frustrating as a beginner and wondering why things aren't aliging properly. Don't forget to click on the checkmark in the top-right corner above the code-block to preview the current CSS.</p>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                        <pre lang="css">
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --textColor: #f1f1f1;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+}</pre>
+                    </div>
+                    <p>Remember that the two dashes <span class="intext-highlight" lang="css">--</span> define a variable. We can assign these variable values' to CSS attributes. We can access them with <span class="intext-highlight" lang="css">var()</span>.</p>
+                </article>
+                <hr>
+                <article>
+                    <h2>Fixing the Static</h2>
+                    <p>By default, all HTML elements will have a position of <span class="intext-highlight">static</span>. This means that elements will follow the flow of the document layout. Changing an element's position to <span class="intext-highlight">fixed</span> will make the element not repsond to any changes in the document. If you have a look at YouTube's header and left navigation section, they don't move, so we need to make them fixed.</p>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                        <pre lang="css">html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+}
+#desktopHeader, #drawer {
+    position: fixed;
+}</pre>
+                    </div>
+                    <p>The HTML file I provided will have all elements, ids and classes predefined so you can just focus on CSS.</p>
+                    <div>
+                        <span class="intext-highlight" lang="css">#desktopHeader, #drawer</span>
+                    </div>
+                    <p>We use a CSS class selector <span class="intext-highlight">,</span> to append classes to a attribute list.</p>
+                </article>
+                <hr>
+                <article>
+                    <h2>Building the Header</h2>
+                    <h4>A list of things we need to get a nice looking header:</h4>
+                    <ol>
+                        <li>Define width</li> 
+                        <li>Define height</li> 
+                        <li>Define position</li>
+                        <li>Define layout</li> 
+                        <li>Define colour</li> 
+                    </ol>
+                    <p>There are some values that seem to come out of nowhere; these values are used on YouTube's website and I copied them over to get as close as possible to a lookalike.</p>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                        <pre lang="css">
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+    --borderColorLegacy: hsl(0, 0%, 18.82%);
+    --highlightBackground: #1f1f1f;
+    --linkColor: #aaa;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: "Roboto","Arial",sans-serif;
+    width: 100vw;
+}
+#desktopHeader, #drawer {
+    position: fixed;
+}
+#desktopHeader {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-height: 56px;
+    padding: 0px 16px 0px 16px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: red;
+    z-index: 5;
+}</pre>
+                    </div>
+                    <p>Wooh baby! That's a lot to take in. Take a look at the preview. I coloured in the boxes to give you an idea of the CSS layout structure.</p>
+                    <p>Have a look at the <span class="intext-highlight" lang="css">#desktopHeader</span>. We made it show itself as a flexbox; we made the direction of this box a row; we set height twice; added some padding; set the position and did something called a <span class="intext-highlight">z-index</span></p>
+                    <p>Now let's figure out what all of these words mean.</p>
+                </article>
+            <hr>
+            </section>
+            <section>
+                <h2>Learning CSS, with Neo</h2>
+                <p>Get a drink, this is going to be a long ride.</p>
+                <article>
+                    <h3 class="sub-title">Flexbox</h3>
+                    <p>Flexbox is - in my opinion - the holy grail of all display styles.</p>
+                    <p>Display defines how an element is shown in the document, as well how their inner layouts work. Flexbox is one of these modes.</p>
+                    <p>Flexbox is quite literally a flexible box. Depending on how you set it up; the size can adjust automatically and elements within the flexbox will adjust accordingly.</p>
+                    <p>There are a few main topics I will focus on for flexbox:</p>
+                    <ul>
+                        <li>justify-content</li>
+                        <li>align-items</li>
+                        <li>flex-basis/shrink/grow</li>
+                    </ul>
+                    <p>To learn more, checkout <a target="_blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Guide to Flexbox by Chris Coyier</a></p>
+                    <div class="example-container">
+                        <h4>justify-content</h4> 
+                        <p>These are the options for justify-content. These will align either the x or y axis depending on the flex-direction. By default, justify-content will effect the x axis.</p>
+                        <h3 class="example-title">justify-content: flex-start;</h3>
+                        <div class="justifyContentExample blockExample" style="justify-content: flex-start;">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">justify-content: center;</h3>
+                        <div class="justifyContentExample blockExample" style="justify-content: center;">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">justify-content: flex-end;</h3>
+                        <div class="justifyContentExample blockExample" style="justify-content: flex-end;">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">justify-content: space-evenly;</h3>
+                        <div class="justifyContentExample blockExample" style="justify-content: space-evenly;">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">justify-content: space-between;</h3>
+                        <div class="justifyContentExample blockExample" style="justify-content: space-between;">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">justify-content: space-around;</h3>
+                        <div class="justifyContentExample blockExample" style="justify-content: space-around;">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="example-container">
+                        <h4>align-items</h4> 
+                        <p>These are some of the options for align-items. These will align either the y or x axis depending on the flex-direction. By default, align-items will effect the y axis. All the spacing functions will work the same.</p>
+                        <h3 class="example-title">align-items: flex-start;</h3>
+                        <div class="alignItemsExample blockExample" style="align-items: flex-start;">
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">align-items: center;</h3>
+                        <div class="alignItemsExample blockExample" style="align-items: center;">
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">align-items: flex-end;</h3>
+                        <div class="alignItemsExample blockExample" style="align-items: flex-end;">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="example-container">
+                        <h4>flex-basis/shrink/grow</h4> 
+                        <p>flex-basis allows you to change the initial size of the flex item.</p>
+                        <p>flex-shrink allows you to change the the relative shrink rate compared to other flex items.</p>
+                        <p>flex-grow allows you to change the relative growth rate compared to other flex items.</p>
+                        <h3 class="example-title">flex-basis: 70px;</h3>
+                        <div class="justifyContentExample blockExample" >
+                            <div style="flex-basis: 70px;"></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">flex-shrink: 2;</h3>
+                        <div class="justifyContentExample blockExample" style="width: 100px; margin: 0 auto;">
+                            <div style="flex-shrink: 2;"></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <h3 class="example-title">flex-grow: 2;</h3>
+                        <div class="justifyContentExample blockExample">
+                            <div style="flex-grow: 2;"></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <h3 class="sub-title">Width and Height</h3>
+                    <p>Both width and height can have the same type of values. I'll mainly focus on:</p>
+                    <ul>
+                        <li>max-width/height</li>
+                        <li>min-width/height</li>
+                        <li>viewport size</li>
+                        <li>percentage size</li>
+                        <li>absolute size</li>
+                    </ul>
+                    <div class="example-container">
+                        <h4>max-width/height and min-width/height</h4>
+                        <p>These are the maximum width or height of an element or can be used to set the minimum width or height of an element.</p>
+                        <h4>viewport sizes</h4>
+                        <p>These are based of the screen size of the current device.</p>
+                        <h4>percentage sizes</h4>
+                        <p>These are relative sizes based on the parent element size.</p>
+                        <h4>absolute sizes</h4>
+                        <p>These are fixed sizes that will not change.</p>
+                    </div>
+                    <h3 class="sub-title">Margins and Padding</h3>
+                    <p>Margins and padding help fine tune and space elements and content within elements.</p>
+                    <div class="example-container">
+                        <h4>Margins</h4>
+                        <p>Margins are used to extend or decrease the boundry of the elements edges.</p>
+                        <h4>Padding</h4>
+                        <p>Paddings are used to extend or decrease spacing inside the element's boundry.</p>
+                    </div>
+                    <h3 class="sub-title">Positioning</h3>
+                    <p>Now, position is quite a hectic topic. I will only cover:</p>
+                    <ul>
+                        <li>absolute</li>
+                        <li>relative</li>
+                        <li>fixed</li>
+                        <li>top/left/right/bottom</li>
+                    </ul>
+                    <div class="example-container">
+                        <h4>position: absolute;</h4>
+                        <p>This will make the current element position unbound and uneffected by siblings. With further tweaks the element will become bound the browser window (this means it can be effected by scrolling).</p>
+                        <h4>position: relative;</h4>
+                        <p>This will make the element position bound to the parent element and effected by siblings.</p>
+                        <h4>position: fixed</h4>
+                        <p>This will cause the element to be unbound by all position and become unchangable; only being positionable based of top/bottom/left/right (unable to be effected by scrolling)</p>
+                        <h4>top/left/right/bottom</h4>
+                        <p>These attributes correspond to the directions stated by them. They are relative values which depend on the type of  positioning defined.</p>
+                    </div>
+                    <h3 class="sub-title">Colours</h3>
+                    <p>Colours aren't terribly complex, therefore I will not cover them in detail. When I introduce some sort of colouring throughout the guide it will be explained.</p>
+                </article>
+                <hr>
+                <article>
+                    <h2>Finishing the header</h2>
+                    <p>Now that we know a bit more about what is happening in the CSS, let's kick into 5<sup>th</sup> gear and finish this header.</p>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                    <pre lang="css">
+html[data-theme="dark"], :root {
+  --background-color: #0f0f0f;  
+  --color: #f1f1f1;
+  --borderColorLegacy: hsl(0, 0%, 18.82%);
+  --highlightBackground: #1f1f1f;
+  --linkColor: #aaa;
+}
+body {
+  margin: 0px;
+  background-color: var(--background-color);
+  color: var(--color);
+  font-family: "Roboto","Arial",sans-serif;
+  width: 100vw;
+}
+#desktopHeader, #drawer {
+  position: fixed;
+}
+#desktopHeader {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  max-height: 56px;
+  padding: 0px 16px 0px 16px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: var(--background-color);
+  z-index: 5;
+}
+#navContainer1 {
+  display: flex;
+  width: 100%;
+  min-width: 169px;
+  max-width: 169px;
+  background-color: blue;
+}
+#navContainer2 {
+  display: flex;
+  align-items: center;
+  flex: 0 1 732px;
+  padding-left: 40px;
+  margin-left: auto;
+  background-color: green;
+}
+#navContainer3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 225px;
+  height: 100%;
+  margin-left: auto;
+  background-color: red;
+}</pre>
+                    </div>
+                    <p>I've colour-coded each section of the header to give you an idea of how things get layed out when writing CSS. Have a look through the CSS. There are 2 things I haven't talked about yet.</p>
+                    <span class="intext-highlight">flex</span>
+                    <span class="intext-highlight">z-index</span>
+                    <p><span class="intext-highlight">flex</span>
+                    is a combination of flex-basis/shrink/grow.
+                    The first value is flex-grow; second is flex-shrink; third is flex-basis 
+                    </p>
+                    <div><pre lang="css">flex: 0 1 732px;</pre></div>
+                    <p><span class="intext-highlight">z-index</span>
+                    defines the "z" axis. It's how CSS defines layers. The larger the number, the more in front the element will appear and vice versa.
+                    </p>
+                    <h3>Aligning and styling all the items in the header</h3>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                    <pre lang="css">
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+    --borderColorLegacy: hsl(0, 0%, 18.82%);
+    --highlightBackground: #1f1f1f;
+    --linkColor: #aaa;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: "Roboto","Arial",sans-serif;
+    width: 100vw;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+#contentContainer {
+    display: none;
+}
+#desktopHeader, #drawer {
+    position: fixed;
+}
+#desktopHeader {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-height: 56px;
+    padding: 0px 16px 0px 16px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: var(--background-color);
+    z-index: 5;
+}
+#navContainer1 {
+    display: flex;
+    width: 100%;
+    min-width: 169px;
+    max-width: 169px;
+}
+#navContainer2 {
+    display: flex;
+    align-items: center;
+    flex: 0 1 732px;
+    padding-left: 40px;
+    margin-left: auto;
+}
+#navContainer3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 225px;
+    height: 100%;
+    margin-left: auto;
+}
+#searchContainer {
+    height: 100%;
+    max-height: 40px;
+    width: 100%;
+}
+#searchBar {
+    height: 100%;
+    width: 100%;
+    padding: 0px 4px 0px 16px;
+    margin-left: 32px;
+    background-color: var(--background-color);
+    border-radius: 40px 0 0 40px;
+    border: 1px solid var(--borderColorLegacy);
+    border-right: 0px;
+}
+#searchButton {
+    display: flex;
+    height: 41px;
+    min-width: 64px;
+    padding: 0px;
+    border-radius: 0 40px 40px 0;
+    background-color: var(--highlightBackground);
+    border: 1px solid var(--borderColorLegacy);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#searchIcon {
+    fill: var(--color);
+    max-width: 24px;
+    max-height: 24px;
+}
+.sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    max-width: 78px;
+    padding: 0px 15px;
+    border: 1px solid var(--borderColorLegacy);
+    border-radius: 40px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.sign-in-font{
+    font-size: 14px;
+    font-weight: bold;
+    color: #3ea6ff;
+}
+.user-icon {
+    margin: 0px 6px 0px -6px;
+    fill: #3ea6ff;
+    max-width: 24px;
+    max-height: 24px;
+}
+#topBarMenu {
+    margin-left: auto;
+    padding: 8px;
+}
+#topBarMenuIcon {
+    fill: white;
+}</pre>
+                    </div>
+                    <p>If you preview the code you will notice it almost looks exactly like YouTube's header. The menu button in the top-left is still not looking right however. I also used <span class="intext-highlight">fill</span> to change the colour of an svg. This is because svg colouring can only be changed by changing the fill (you can also use <span class="intext-highlight">filter</span> but that is out of scope for this guide).</p>
+                    <h3>Deviating YouTube's hamburger</h3>
+                    <p>YouTube uses a hamburger svg for their menu icon. I thought it would a great opportunity for you to learn about child selectors and pseudo elements.</p>
+                    <div>
+                        <h3 class="pre-title">global.css</h3>
+                        <pre lang="css">
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+    --borderColorLegacy: hsl(0, 0%, 18.82%);
+    --highlightBackground: #1f1f1f;
+    --linkColor: #aaa;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: "Roboto","Arial",sans-serif;
+    width: 100vw;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+#contentContainer {
+    display: none;
+}
+#desktopHeader, #drawer {
+    position: fixed;
+}
+#desktopHeader {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-height: 56px;
+    padding: 0px 16px 0px 16px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: var(--background-color);
+    z-index: 5;
+}
+#navContainer1 {
+    display: flex;
+    width: 100%;
+    min-width: 169px;
+    max-width: 169px;
+}
+#navContainer2 {
+    display: flex;
+    align-items: center;
+    flex: 0 1 732px;
+    padding-left: 40px;
+    margin-left: auto;
+}
+#navContainer3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 225px;
+    height: 100%;
+    margin-left: auto;
+}
+#searchContainer {
+    height: 100%;
+    max-height: 40px;
+    width: 100%;
+}
+#searchBar {
+    height: 100%;
+    width: 100%;
+    padding: 0px 4px 0px 16px;
+    margin-left: 32px;
+    background-color: var(--background-color);
+    border-radius: 40px 0 0 40px;
+    border: 1px solid var(--borderColorLegacy);
+    border-right: 0px;
+}
+#searchButton {
+    display: flex;
+    height: 41px;
+    min-width: 64px;
+    padding: 0px;
+    border-radius: 0 40px 40px 0;
+    background-color: var(--highlightBackground);
+    border: 1px solid var(--borderColorLegacy);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#searchIcon {
+    fill: var(--color);
+    max-width: 24px;
+    max-height: 24px;
+}
+.sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    max-width: 78px;
+    padding: 0px 15px;
+    border: 1px solid var(--borderColorLegacy);
+    border-radius: 40px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.sign-in-font{
+    font-size: 14px;
+    font-weight: bold;
+    color: #3ea6ff;
+}
+.user-icon {
+    margin: 0px 6px 0px -6px;
+    fill: #3ea6ff;
+    max-width: 24px;
+    max-height: 24px;
+}
+#topBarMenu {
+    margin-left: auto;
+    padding: 8px;
+}
+#topBarMenuIcon {
+    fill: white;
+}
+#hamburger {
+    background-color: transparent;
+    border: 0px;
+}
+#hamburger &gt; span, #hamburger:before, #hamburger:after {
+    display: block;
+    content: '';
+    background-color: white;
+    width: 18px;
+    height: 1px;
+    margin: 5px 0px;
+}
+#logo {
+    width: 120px;
+    padding: 18px 14px 18px 16px;
+}</pre>
+                    </div>
+                    <p>This is the entire CSS for the hamburger <span class="intext-highlight" lang="css">#hamburger &gt; span, #hamburger:before, #hamburger:after</span></p>
+                    <p><span class="intext-highlight" lang="css">#hamburger &gt; span</span> means that the id <span class="intext-highlight">hamburger</span> will select all children elements <span class="intext-highlight">&gt;</span> that are <span class="intext-highlight">span</span> elements</p>
+                    <p>We then add two psuedo elements to the hamburger:</p>
+                    <div>
+                        <span class="intext-highlight" lang="css">:before</span>
+                        <span class="intext-highlight" lang="css">:after</span>
+                    </div>
+                    <p>The name says it all. <span class="intext-highlight">before</span> adds a pseudo(fake) element before any child elements in the parent. <span class="intext-highlight">after</span> adds a pseudo element after all child elements in the parent.</p>
+                    <p>Now, it's not 100% exact but it's close enough and hopefully you learned something new.</p>
+                </article>
+                <hr>
+                <article>
+                    <h2>Building the drawer</h2>
+                    <p>There is some homework for you dear reader. To build the drawer.</p>
+                    <p>Here's a checklist for your CSS process:</p>
+                    <ol>
+                        <li>Decide which layout you want to use</li>
+                        <li>Block out the main elements</li>
+                        <li>Write the correct layout formatting</li>
+                        <li>Correct all the colours</li>
+                    </ol>
+                    <p>If you get stuck, have a look at the final code below.</p>
+                </article>
+            </section>
+            <section>
+                <h2>The Finished Project</h2>
+                <a id="EndOfGuide"></a>
+                <div>
+                    <h3 class="pre-title">global.css</h3>
+                    <pre lang="css">
+html[data-theme="dark"], :root {
+    --background-color: #0f0f0f;  
+    --color: #f1f1f1;
+    --borderColorLegacy: hsl(0, 0%, 18.82%);
+    --highlightBackground: #1f1f1f;
+    --linkColor: #aaa;
+}
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: "Roboto","Arial",sans-serif;
+    width: 100vw;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+#desktopHeader, #drawer {
+    position: fixed;
+}
+#desktopHeader {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-height: 56px;
+    padding: 0px 16px 0px 16px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: var(--background-color);
+    z-index: 5;
+}
+#navContainer1 {
+    display: flex;
+    width: 100%;
+    min-width: 169px;
+    max-width: 169px;
+}
+#navContainer2 {
+    display: flex;
+    align-items: center;
+    flex: 0 1 732px;
+    padding-left: 40px;
+    margin-left: auto;
+}
+#navContainer3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 225px;
+    height: 100%;
+    margin-left: auto;
+}
+#searchContainer {
+    height: 100%;
+    max-height: 40px;
+    width: 100%;
+}
+#searchBar {
+    height: 100%;
+    width: 100%;
+    padding: 0px 4px 0px 16px;
+    margin-left: 32px;
+    background-color: var(--background-color);
+    border-radius: 40px 0 0 40px;
+    border: 1px solid var(--borderColorLegacy);
+    border-right: 0px;
+}
+#searchButton {
+    display: flex;
+    height: 41px;
+    min-width: 64px;
+    padding: 0px;
+    border-radius: 0 40px 40px 0;
+    background-color: var(--highlightBackground);
+    border: 1px solid var(--borderColorLegacy);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#searchIcon {
+    fill: var(--color);
+    max-width: 24px;
+    max-height: 24px;
+}
+.sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    max-width: 78px;
+    padding: 0px 15px;
+    border: 1px solid var(--borderColorLegacy);
+    border-radius: 40px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.sign-in-font{
+    font-size: 14px;
+    font-weight: bold;
+    color: #3ea6ff;
+}
+.user-icon {
+    margin: 0px 6px 0px -6px;
+    fill: #3ea6ff;
+    max-width: 24px;
+    max-height: 24px;
+}
+#topBarMenu {
+    margin-left: auto;
+    padding: 8px;
+}
+#topBarMenuIcon {
+    fill: white;
+}
+#hamburger {
+    background-color: transparent;
+    border: 0px;
+}
+#hamburger > span, #hamburger:before, #hamburger:after {
+    display: block;
+    content: '';
+    background-color: white;
+    width: 18px;
+    height: 1px;
+    margin: 5px 0px;
+}
+#logo {
+    width: 120px;
+    padding: 18px 14px 18px 16px;
+}
+#drawer {
+    position: fixed;
+    width: 100%;
+    max-width: 240px;
+    top: 56px;
+    bottom: 0px;
+    overflow-y: scroll;
+}
+#drawer ul {
+    list-style-type: none;
+    padding: 12px;
+    margin: 0px;
+}
+#drawer ul li {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px 12px;
+    align-items: center;
+    height: 40px;
+    font-size: 15px;
+}
+#currentDrawer {
+    background-color: var(--highlightBackground);
+    border-radius: 10px;
+    font-weight: bold;
+}
+hr {
+    border: 1px solid var(--highlightBackground);
+}
+.drawer-icon {
+    max-width: 24px;
+    max-height: 24px;
+    fill: var(--color);
+    margin-right: 24px;
+}
+.span-font {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+#signInBox {
+    padding: 16px 32px;
+}
+.list-title {
+    padding: 6px 12px 4px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.footer-link {
+    color: var(--linkColor);
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.8rem;
+}</pre>
+<p>I really hope you liked the guide. Bye bye for now, <i>Neo Sahadeo</i></p>
+                </div>
+            </section>
         </main>
         <footer>
-            
+            <button style="position: fixed; bottom: 0px; right: 0px; display: block;" id="togglePreview" onclick="togglePreview(this)">Show Preview</button>
         </footer>
+        <script src="../static/copy.js"></script>
+        <script src="../static/draggable.js"></script>
+        <script src="../static/cssHighlighter.js"></script>
+        <script src="../static/cssPreview.js"></script>
+        <script>
+            'use strict';
+            function togglePreview(self){
+                document.getElementById('cssPreviewContainer').classList.toggle('hidden')
+                if (document.getElementById('cssPreviewContainer').classList.contains('hidden')){
+                    self.innerText = 'Show Preview'
+                }else{
+                    self.innerText = 'Hide Preview'
+                }
+            }
+            document.addEventListener('DOMContentLoaded', ()=>{
+                document.getElementById('cssPreviewContainer').style.zIndex = '999'
+            })
+        </script>
     </body>
 </html>
