@@ -1,0 +1,26 @@
+html {
+    --background-color-inputs: #2e2e2e;
+}
+#regexEditor {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 40px 10px 40px;
+}
+#testString, #testRegex, #output {
+    width: 100%;
+    min-height: 40px;
+    background-color: var(--background-color-inputs);
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+}
+#testRegex, #testString:focus {
+    outline: none;
+}
+h4 {
+    margin: 20px 0px 10px 0px;
+}
+#showEditor {
+    position: absolute; 
+    top: 0px;
+}

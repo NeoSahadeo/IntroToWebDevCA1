@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Neo Sahadeo">
+        <meta name="keywords" content="HTML, WebDev, Beginners, Guide">
+        <meta name="description" content="A Regex beginners guide.">
+        <meta name="page" content="regex">
+        <title>Intro To Web Dev | Regex</title>
+        <link rel="stylesheet" href="../css/global.css">
+        <link rel="stylesheet" href="../css/regexhtml.css">
+        <script type="module" src="../static/loadheader.js"></script>
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <div id="regexEditor">
+                <div isdraggable="true">
+                    <h4>
+                        Neo's Regex Editor
+                    </h4>
+                    <button id="hideEditor" onclick="hideEditor(this)">Hide</button>
+                </div>
+                <iframe style="resize: both; border-radius: 0px 0px 5px 5px; border-top: 0px;" src="./regexeditor.html">
+                </iframe>
+            </div>
+            <h1 class="title">Learn Regex</h1>
+            <section>
+                <article>
+                    <h2>What is regex?</h2>
+                    <figure>
+                        <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">"Regular expressions are patterns used to match character combinations in strings." - mdn web docs</blockquote>
+                    </figure>
+                    <p>
+                    In a more simplistic description, regex is some fancy looking symbols put together to find certain parts of a string.                        
+                    </p>
+                    <p>
+                    Take, for example, the emergency care number below:
+                    </p>
+                    <p class="highlight">
+                    +27 999
+                    </p>
+                    <p class="highlight">
+                    +353 999
+                    </p>
+                    <p>
+                    The second number is the correct Irish phone number while the first is not. But how do we tell the difference?
+                    </p>
+                    <h3>
+                        <strong>REGEX!</strong>
+                    </h3>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <h2>Getting Started</h2>
+                    <p>
+                    Alright, there is quite a lot to learn, but don't get disheartened; it's all about practice :) 
+                    </p>
+                    <p>
+                    Here is what you'll learn to read:
+                    </p>
+                    <figure>
+                        <blockquote cite="https://regex101.com/r/im7xx2/1">
+                            <div>
+                                <div>
+                                    <h3 class="pre-title">Regex</h3>
+                                </div>
+                                <pre>([f]?\".*?\")|([f]?'.*?')|(.(?<=\([^f\"']).+?(?=\)))|\s+|\w+|\W</pre>
+                            </div>
+                            <p>
+                            - Neo Sahadeo
+                            </p>
+                        </blockquote>
+                    </figure>
+                    <p>
+                    Regex looks very alien at first, but it's really simple once you get the hang of it.
+                    </p>
+                </article>
+                <article>
+                    <p>
+                    We will be using <a href="https://javascript.info/regular-expressions">Javascript Regex</a>. Try using Regex101 at <a href="https://regex101.com/" target="_blank">Regex101</a>, it's much more advanced that my editor.
+                    </p>
+                    <table border="1">
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Meaning</th>
+                        </tr>
+                        <tr>
+                            <td>.</td>
+                            <td>Select a single character</td>
+                        </tr>
+                        <tr>
+                            <td>^</td>
+                            <td>Select from front of line</td>
+                        </tr>
+                        <tr>
+                            <td>$</td>
+                            <td>Select from end of line</td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>Select zero of more repetitions</td>
+                        </tr>
+                        <tr>
+                            <td>+</td>
+                            <td>Select one or more repetitions</td>
+                        </tr>
+                        <tr>
+                            <td>?</td>
+                            <td>Make optional | make non-greedy</td>
+                        </tr>
+                        <tr>
+                            <td>.*</td>
+                            <td>Select everything</td>
+                        </tr>
+                        <tr>
+                            <td>[^]</td>
+                            <td>Selects everything except</td>
+                        </tr>
+                        <tr>
+                            <td>(?=)</td>
+                            <td>Positive lookahead</td>
+                        </tr>
+                        <tr>
+                            <td>(?<=)</td>
+                            <td>Positive lookbehind</td>
+                        </tr>
+                        <tr>
+                            <td>(?!=)</td>
+                            <td>Negative lookahead</td>
+                        </tr>
+                        <tr>
+                            <td>(?!<=)</td>
+                            <td>Negative lookbehind</td>
+                        </tr>
+                        <tr>
+                            <td>\w</td>
+                            <td>Any alphanumeric character</td>
+                        </tr>
+                        <tr>
+                            <td>\W</td>
+                            <td>Any non-alphanumeric character</td>
+                        </tr>
+                        <tr>
+                            <td>\d</td>
+                            <td>Any diget</td>
+                        </tr>
+                        <tr>
+                            <td>\D</td>
+                            <td>Any non-digit</td>
+                        </tr>
+                        <tr>
+                            <td>\s</td>
+                            <td>Any whitespace</td>
+                        </tr>
+                        <tr>
+                            <td>\S</td>
+                            <td>Any non-whitespace</td>
+                        </tr>
+                        <tr>
+                            <td>[0-9]</td>
+                            <td>Selects any number 0 to 9</td>
+                        </tr>
+                        <tr>
+                            <td>[A-Z]</td>
+                            <td>Selects all capital letters</td>
+                        </tr>
+                        <tr>
+                            <td>[a-z]</td>
+                            <td>Selects all lowercase letters</td>
+                        </tr>
+                        <tr>
+                            <td>[A-z]</td>
+                            <td>Selects all letters</td>
+                        </tr>
+                        <tr>
+                            <td>{x}</td>
+                            <td>Repeats x amount of times</td>
+                        </tr>
+                        <tr>
+                            <td>{x, y}</td>
+                            <td>x to y repetitions</td>
+                        </tr>
+                        <tr>
+                            <td>()</td>
+                            <td>Grouping and group selection</td>
+                        </tr>
+                        <tr>
+                            <td>(|)</td>
+                            <td>Grouping and group selection with "or"</td>
+                        </tr>
+                    </table>
+                </article>
+                <article>
+                    <h2>Selecting the Irish phone number</h2>
+                    <p>For this, we want to use a numerical selector to select all the digits.</p>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Regex</h5>
+                        </div>
+                        <pre>\d</pre>
+                    </div>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Output</h5>
+                        </div>
+                        <pre>
++<span style="color:red">3</span><span style="color:red">5</span><span style="color:red">3</span> <span style="color:red">9</span><span style="color:red">9</span><span style="color:red">9</span>
++<span style="color:red">2</span><span style="color:red">7</span> <span style="color:red">9</span><span style="color:red">9</span><span style="color:red">9</span></pre>
+                    </div>
+                    <p>Huh? Well that selected all the digits, it also selected the digits we don't want.</p>
+                    <p>We need a way to select the digits if they appear after +353.</p>
+                    <p>Let's try adding +353 to the beginning of our expression.</p>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Regex</h5>
+                        </div>
+                        <pre>+353\d</pre>
+                    </div>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Output</h5>
+                        </div>
+                        <pre>+353 999
++27 999</pre>                
+                    </div>
+                    <p>Drats! We ran into another issue. The "+" symbol is already a modifier. We can stop any symbol acting as a modifier by escaping it use a backslash. This will not work however. Recall our regex expression</p>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Regex</h5>
+                        </div>
+                        <pre>+353\d</pre>
+                    </div>
+                    <p>Escaping this will then allow us to select "+353", but then the "\d" all digits selector wants to select any digits after this number.</p>
+                    <p>Regex will read it like this.</p>
+                    <ul>
+                        <li>Find +353</li>
+                        <li>Find (\d) any digits after that</li>
+                    </ul>
+                    <p>This is a problem. Our Irish phone number has a space between "+353" and the number. To fix the issue we just add a space between "+353" and "\d".</p>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Regex</h5>
+                        </div>
+                        <pre>\+353 \d</pre>
+                    </div>
+                    <p>Breaking this down we can understand what we are trying to tell regex.</p>
+                    <ul>
+                        <li>(\+353) tells regex to select all values that have "+353"</li>
+                        <li>( \d) tells regex to select a digit if the following condition is met plus this condition</li>
+                    </ul>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Output</h5>
+                        </div>
+                        <pre><span style="color:red">+</span><span style="color:red">3</span><span style="color:red">5</span><span style="color:red">3</span><span style="color:red"> </span><span style="color:red">9</span>99
++27 999</pre>
+                    </div>
+                    <p>We're almost there. It's selecting the correct number, but it's not selecting all the digits. To fix this issue we have two options. Use the star (wildcard) (selects 0 or more) modifier that selects everything or use a plus modifier that selects everything (1 or more).</p>
+                    <p>Try experimenting with both. For this guide I will use the plus modifier.</p>
+                    <div>
+                        <h5 class="pre-title">Regex</h5>
+                        <pre>\+353 \d+</pre>
+                    </div>
+                    <div>
+                        <div>
+                            <h5 class="pre-title">Output</h5>
+                            <pre><span style="color:red">+</span><span style="color:red">3</span><span style="color:red">5</span><span style="color:red">3</span><span style="color:red"> </span><span style="color:red">9</span><span style="color:red">9</span><span style="color:red">9</span>
++27 999</pre>
+                        </div>
+                    </div>
+                    <p>Great Work! You've built your first regular expression.</p>
+                    <br>
+                </article>
+            </section>
+            <section>
+                <hr>
+                <article>
+                    <figure>
+                        <a href="https://openverse.org/image/a29633ec-c972-4108-b31f-8350e5b7a42e?q=Looking">
+                            <img class="intro-image" alt="Old People Looking at Something" title="Old People Looking at Something" src="../images/Old_people_looking_at_something.webp" loading="lazy">
+                        </a>
+                        <figcaption>
+                            <a href="https://www.flickr.com/photos/52179521@N07">
+                                Jared Wong
+                            </a>, Old People Looking at Something</figcaption>
+                    </figure>
+                    <h2>Having A Look Around.</h2>
+                    <p>Let's present a problem. Suppose we want to select the domain of the URL.</p>
+                    <p class="highlight">https://
+                    <span style="color: green;">
+                        www.google.com
+                    </span>/
+                    </p>
+                    <p class="highlight">https://
+                    <span style="color: green;">
+                        www.youtube.com
+                    </span>/
+                    </p>
+                    <p>Take some time to try and come up with your best solution, then continue to read the rest of the guide.</p>
+                    <p>You would notice that it's hard to find a universal pattern that selects just the domain of the URL. It would convient to just tell regex to select everything after the protocol, but stop selecting before the path.</p>
+                    <p>Luckly, <a href="https://javascript.info/regular-expressions">Javascript Regex</a> implements "looking" functions. Note that not all regex modules are built equal and some language have support for advanced features like "looking around". </p>
+                    <p>There 4 expressions we are intrested in are:</p>
+                    <table border="1">
+                        <tr>
+                            <th>Expression</th>
+                            <th>Meaning</th>
+                        </tr>
+                        <tr>
+                            <td>(?=)</td>
+                            <td>Positive Lookahead</td>
+                        </tr>
+                        <tr>
+                            <td>(?<=)</td>
+                            <td>Positive Lookbehind</td>
+                        </tr>
+                        <tr>
+                            <td>(?!)</td>
+                            <td>Negative Lookahead</td>
+                        </tr>
+                        <tr>
+                            <td>(?<!)</td>
+                            <td>Negative Lookbehind</td>
+                        </tr>
+                    </table>
+                    <p>The "look around" expressions function quite similarly to if statements. Breaking down the positive lookahead:</p>
+                    <ul>
+                        <li><p>The brackets is called a "group selector". This will seperate anything within the brackets into it's own match group (more on this later).</p>()</li>
+                        <li><p>The question mark and equals sign represents a query selector.</p>?=</li>
+                    </ul>
+                    <p class="highlight">
+                        (?=)
+                    </p>
+                    <p>The positive lookahead expression will put an invisible marker before any matches (this also depends on whether the statement is greedy or not, more on this later).</p>
+                    <div>
+                        <h3 class="pre-title">Match example, (?=)</h3>
+                        <pre><span style="color:red;">|</span>match before me</pre>
+                    </div>
+                    <p>Likewise, the positive lookbehind functions the same as the positive lookahead, except it puts an invisible marker after any matches.</p>
+                    <p>The '&lt;' is used to decide which side the cursor should be placed.</p>
+                    <div>
+                        <h3 class="pre-title">Match example, (?&lt;=)</h3>
+                        <pre>match after me<span style="color:red;">|</span></pre>
+                    </div>
+                    <p>Negative "look-arounds" are used as the "else" part of an if statemnt. <i><b>IF</b></i> this expression does <i><b>not match</b></i> the negative "look-around" then select it.</p>
+                </article>
+                <article>
+                    <h2>How to solve to problem</h2>
+                    <p>We need to select everything after the 'https://' but before the '/'</p>
+                    <div>
+                        <h3 class="pre-title">Match example</h3>
+                        <pre><span style="color:red;">https://</span><span style="color:lightgreen;">www.google.com</span><span style="color: red;">/</span></pre>
+                    </div>
+                    <p>To this we use a lookbehind and a lookahead.</p>
+                    <p>Make sure to escape forward-slash by using a backslash.</p>
+                    <div>
+                        <h3 class="pre-title">Regex, Lookbehind</h3>
+                        <pre>(?&lt;=https:\/\/)</pre>
+                    </div>
+                    <div>
+                        <h3 class="pre-title">Regex, Lookbehind + Everything + Lookahead</h3>
+                        <pre>(?&lt;=https:\/\/).*(?=\/)</pre>
+                    </div>
+                    <p>Breaking the expression down:</p>
+                    <ul>
+                        <li>
+                            (?&lt;=https:\/\/)
+                            <p>Put a cursor after 'https://'</p>
+                        </li>
+                        <li>
+                            .*
+                            <p>Wildcard selector that will select everything after it</p>
+                        </li>
+                        <li>
+                            (?=\/)
+                            <p>Put a cursor before '/'</p>
+                        </li>
+                    </ul>
+                    <p>What this results in, is that the wildcard selector is nested between two endpoints. This gives us our desired result, selecting just the domain.</p>
+                </article>
+            </section>
+            <section>
+                <hr>
+                <h2>Grouping and Combinations</h2>
+                <article>
+                    <h3>How to group</h3>
+                    <p>In regular-expressions, grouping is the act in which we can split information up. This process is called a 'capture group'.</p>
+                    <p>Unfortunately, my regex editor does not display different groups. I highly recommend using <a href="https://regex101.com/">Regex 101</a> to see different groups.</p>
+                    <p>Try the following regex expression and notice how 'a' and 'b' get split into group 0, and 1 respectively.</p>
+                    <div>
+                        <h3 class="pre-title">Regex</h3>
+                        <pre>a|(b)</pre>
+                    </div>
+                    <div>
+                        <h3 class="pre-title">Test String</h3>
+                        <pre>ab</pre>
+                    </div>
+                    <p>If there is no specified capture group, the default group is 0.</p>
+                    <p>You may have also we used a pipe '|'. A pipe is used as an 'or' symbol in regex.</p>
+                    <p>We can use the pipe to combine different selectors together. Recall that I mentioned not all langauges support regex equally, well some languages like Pearl, will support more statements and expressions that just the 'or' operator.</p>
+                    <br>
+                    <p>Here's a practice problem. We want to select the trailing white spaces, '\n', at the front and end of the string only, and then split these into two groups; 1 and 2.</p>
+                    <div>
+                        <h3 class="pre-title">Practice Problem</h3>
+                        <pre>\n&lt;div>\n\t&lt;p>\n\t\tHello World, from the index.html file.\n\t&lt;/p>\n&lt;/div>\n</pre>
+                    </div>
+                    <div>
+                        <button class="reveal-button" onclick="reveal()">Show answer</button>
+                        <pre class="hidden">(^\\n)|(\\n$)</pre>
+                        <div class="hidden">
+                            <p>Explanation:</p>
+                            <ul>
+                                <li>
+                                    (^\\n)
+                                    <p>Selects everything at the start of the string that has a backslash, '\', and a 'n'</p>
+                                </li>
+                                <li>
+                                    |
+                                    <p>OR operator that combines both capture groups together</p>
+                                </li>
+                                <li>
+                                    (\\n$)
+                                    <p>Selects everything at the end of the string that has a backslash, '\', and a 'n'</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+                <br>
+            </section>
+            <section>
+                <hr>
+                <h2>We're Half-Way There!</h2>
+                <article>
+                    <p>Well, not actually. We are in fact, almost done :)</p>
+                    <h3>Negative Selecting and Non-Greedy Modifiers</h3> 
+                    <p>One of the final topics I will cover in this guide is negative selecting and non-greedy modifiers.</p>
+                    <p>We'll start of with negative selecting. It's pretty straightforward, with a few caviats.</p>
+                    <div>
+                        <h3 class="pre-title">Regex</h3>
+                        <pre>[^]</pre>
+                    </div>
+                    <p>The negative selector will select everything that is not between the square brackets.</p>
+                    <p>The keen eyes among might be asking, "Why do we need a negative selector when we have a negative lookaround"</p>
+                    <p>That's because I jumped the gun. Normally when learning regex you learn the very basics, a.k.a. negative selector. The issue with the negative selector is that it can <b><i>only</i></b> function as a non capturing group. I wanted to introduce you to lookarounds first as they allow you do more, faster.</p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <button style="position: fixed; bottom: 0px; right: 0px; display: block;" id="showEditor" onclick="showEditor(this)">Show Editor</button>
+        </footer>
+        <script src="../static/draggable.js"></script>
+        <script>
+            function hideEditor(element){
+                document.getElementById('regexEditor').style.display = 'none'
+                document.getElementById('showEditor').style.display = 'block'
+            }
+            function showEditor(element){
+                document.getElementById('showEditor').style.display = 'none'
+                document.getElementById('regexEditor').style.display = 'flex'
+            }
+        </script>
+    </body>
+</html>

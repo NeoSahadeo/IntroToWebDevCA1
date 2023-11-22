@@ -1,0 +1,9 @@
+#htmlEditor {
+   display: flex; 
+   flex-direction: row;
+   width: 100%;
+   color: black;
+}
+#codeBlock {
+    background-color: white; 
+}
